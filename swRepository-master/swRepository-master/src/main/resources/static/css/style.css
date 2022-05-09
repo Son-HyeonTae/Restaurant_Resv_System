@@ -31,8 +31,12 @@ body {
 }
 
 h1,
-h2 {
+h2{
   font-family: 'Dancing Script', cursive;
+}
+
+p1{
+  font-family: 'Oswald', cursive;
 }
 
 .heading_container {
@@ -441,7 +445,7 @@ a:focus {
 }
 
 .offer_section .box .detail-box h6 {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Italiana', cursive;
   margin: 10px 0;
 }
 
