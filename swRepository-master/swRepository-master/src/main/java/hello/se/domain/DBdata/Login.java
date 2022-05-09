@@ -1,5 +1,6 @@
 package hello.se.domain.DBdata;
 
+import hello.se.web.Form.LoginForm;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,8 +26,18 @@ public class Login {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    /*@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "login_id")
-    private Customer customer;
+    private Customer customer;*/
 
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    public void setLogin(LoginForm loginForm) {
+        this.id = loginForm.getId();
+        this.password = loginForm.getPassword();
+        this.username = loginForm.getUsername();
+        this.phoneNumber = loginForm.getPhoneNumber();
+    }
 }

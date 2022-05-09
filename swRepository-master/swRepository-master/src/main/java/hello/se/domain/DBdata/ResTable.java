@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ResTable")
 @Data
 //레스토랑 테이블
 public class ResTable {
@@ -22,4 +21,8 @@ public class ResTable {
 
     @OneToOne(mappedBy = "resTable")
     private Reservation reservation;
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }

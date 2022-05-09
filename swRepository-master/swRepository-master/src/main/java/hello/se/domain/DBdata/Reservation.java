@@ -1,24 +1,31 @@
 package hello.se.domain.DBdata;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
 //예약정보
 public class Reservation {
     @Id
+    @GeneratedValue
     @Column(name = "oid", nullable = false)
     private Integer oid;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "covers")
     private Integer covers;
 
     @Column(name = "date")
-    private LocalDate date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
 
     @Column(name = "time")
     private LocalDateTime time;
@@ -29,11 +36,11 @@ public class Reservation {
     @Column(name = "customer_id")
     private Integer customer_id;
 
-    /*@Column(name = "booking_name")
-    private String name;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "booking_phoneNumber")
-    private String phoneNumber;*/
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
 
     @Column(name = "arrivalTime")
     private LocalDateTime arrivalTime;
@@ -48,7 +55,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Integer oid, Integer covers, LocalDate date, LocalDateTime time,
+    public Reservation(Integer oid, Integer covers, Date date, LocalDateTime time,
                        Integer table_id, Integer customer_id, LocalDateTime arrivalTime) {
         this.oid = oid;
         this.covers = covers;
@@ -57,5 +64,9 @@ public class Reservation {
         this.table_id = table_id;
         this.customer_id = customer_id;
         this.arrivalTime = arrivalTime;
+    }
+
+    public void setResTable(ResTable resTable) {
+        this.resTable = resTable;
     }
 }

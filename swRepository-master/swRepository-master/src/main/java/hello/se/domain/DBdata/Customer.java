@@ -18,6 +18,6 @@ public class Customer {
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @OneToOne(mappedBy = "customer")
-    private Login login;
+    /*@OneToOne(mappedBy = "customer")
+    private Login login;*/
 }

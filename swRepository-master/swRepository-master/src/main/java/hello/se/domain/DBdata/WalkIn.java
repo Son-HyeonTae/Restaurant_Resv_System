@@ -3,6 +3,7 @@ package hello.se.domain.DBdata;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,13 +17,11 @@ public class WalkIn {
     private Integer covers;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Column(name = "time")
     private LocalDateTime time;
 
     @Column(name = "table_id")
     private Integer table_id;
-
-
 }

@@ -2,6 +2,7 @@ package hello.se.domain.respository;
 
 import hello.se.domain.DBdata.Reservation;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
+@Transactional
 public class ReservationRepository {
     @PersistenceContext
     EntityManager em;
