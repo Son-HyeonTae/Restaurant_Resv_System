@@ -28,3 +28,5 @@ DB Table과 java class를 매핑, query는 JPQL을 사용
 6. 예약을 할 때 로그인 사용자와 일반 사용자의 분리
 7. 인원수와 예약일시에 따른 검증 (중복예약, if Reservation covers > 테이블의 covers)
 
+**5월 11일**
+본인이 예약한 리스트 확인
