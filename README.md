@@ -29,5 +29,5 @@ DB Table과 java class를 매핑, query는 JPQL을 사용
 7. 인원수와 예약일시에 따른 검증 (중복예약, if Reservation covers > 테이블의 covers)
 
 **5월 11일**
-관리자 예약 리스트 페이지
+관리자 예약 리스트 페이지,
 유저 예약 리스트 클릭시 예약 수정 페이지 제작 
