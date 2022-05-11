@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <!-- Basic -->
     <meta charset="utf-8"/>
@@ -11,28 +10,31 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <link rel="shortcut icon" href="images/favicon.png" th:href="@{~/images/favicon.png}" type="">
 
-    <title> Italic Time - Administer List </title>
+    <title> Administer List </title>
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" th:href="@{~/css/bootstrap.css}"/>
 
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css}"/>
     <!-- nice select  -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css}"
           integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
           crossorigin="anonymous"/>
     <!-- font awesome style -->
-    <link href="css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{~/css/font-awesome.min.css}"/>
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet" th:href="@{~/css/style.scss}"/>
     <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet"/>
+    <link href="css/responsive.css" rel="stylesheet" th:href="@{~/css/responsive.css}"/>
 
 </head>
 
@@ -40,15 +42,16 @@
 
 <div class="hero_area">
     <div class="bg-box">
-        <img src="images/bg.jpg" alt="">
+        <img src="images/hero-bg.jpg" th:src="@{~/images/hero-bg.jpg}" alt="">
     </div>
+
     <!-- 헤더  -->
     <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="/index">
+                <a class="navbar-brand" href="index" th:href="@{index}">
             <span>
-              ItalicTime
+              Restaurant Name
             </span>
                 </a>
 
@@ -61,16 +64,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mx-auto ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index" th:href="@{index}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/menu">Menu</a>
+                            <a class="nav-link" href="menu" th:href="@{menu}">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link" href="about" th:href="@{about}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/book">Book Table</a>
+                            <a class="nav-link" href="book" th:href="@{book}">Book Table</a>
                         </li>
                     </ul>
                     <div class="user_option">
@@ -139,7 +142,7 @@
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                         </form>
-                        <a href="/login" class="order_online">
+                        <a href="" class="order_online">
                             Login
                         </a>
                     </div>
@@ -216,19 +219,19 @@
                         <a href="">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <span>
-                  Kyonggi University
+                  위치
                 </span>
                         </a>
-                        <a href="">`
+                        <a href="">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
-                  02-1234-5678
+                  전화번호
                 </span>
                         </a>
                         <a href="">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                             <span>
-                  EworldTension@kyonggi.ac.kr
+                  이메일
                 </span>
                         </a>
                     </div>
@@ -237,10 +240,10 @@
             <div class="col-md-4 footer-col">
                 <div class="footer_detail">
                     <a href="" class="footer-logo">
-                        ItalicTime
+                        Restaurant Name
                     </a>
                     <p>
-                        육류, 생선류등 메인요리와 스튜, 피자 그리고 다양한 와인들을 즐길 수 있습니다.
+                        가게 요약 설명 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
                     </p>
                     <div class="footer_social">
                         <a href="">
@@ -263,7 +266,7 @@
                     가게 운영시간
                 </p>
                 <p>
-                    11:00 Am - 09:00 Pm
+                    시:분 Am - 시:분 Pm
                 </p>
             </div>
         </div>
@@ -271,7 +274,7 @@
             <p>
                 &copy; <span id="displayYear"></span>
                 <a href="https://html.design/">Restaurant Reservation Page System</a><br><br>
-                &copy; <span id="displayYear"></span> Distributed By
+                <!--                &copy; <span id="displayYear"></span> Distributed By-->
                 <a href="https://themewagon.com/" target="_blank">Team E</a>
             </p>
         </div>
@@ -280,24 +283,31 @@
 <!-- 하단 끝 -->
 
 <!-- jQery -->
-<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js" th:src="@{~/js/jquery-3.4.1.min.js}"></script>
 <!-- popper js -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js}"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
+
 <!-- bootstrap js -->
-<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js" th:src="@{~/js/bootstrap.js}"></script>
 <!-- owl slider -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js}">
 </script>
 <!-- isotope js -->
-<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"
+        th:src="@{https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js}"></script>
 <!-- nice select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js}"></script>
 <!-- custom js -->
-<script src="js/custom.js"></script>
+<script src="js/custom.js"
+        th:src="@{~/js/custom.js}"></script>
 <!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"
+        th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap}">
 </script>
 <!-- End Google Map -->
 
