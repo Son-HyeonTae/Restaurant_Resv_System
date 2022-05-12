@@ -4,37 +4,48 @@ import hello.se.domain.DBdata.Login;
 import hello.se.domain.respository.LoginRepository;
 import hello.se.web.Form.LoginForm;
 import hello.se.web.Form.LoginValidationForm;
+import hello.se.web.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
 @Slf4j
 public class LoginController {
     private LoginRepository loginRepository;
+    private LoginService loginService;
 
     @Autowired
-    public LoginController(LoginRepository loginRepository) {
+    public LoginController(LoginRepository loginRepository, LoginService loginService) {
+        this.loginService = loginService;
         this.loginRepository = loginRepository;
     }
 
     @PostMapping("/login/enter")
-    public String enterLogin(@Validated @ModelAttribute("loginValidation") LoginValidationForm validationForm) {
-        Login findUser = loginRepository.findFromDB(validationForm);
-        Optional<Login> wrapperLogin = Optional.of(findUser);
+    public String enterLogin(@Validated @ModelAttribute("loginValidation") LoginValidationForm validationForm,
+                             RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        Login currentUser = loginService.inspectLogin(validationForm);
+        HttpSession session = request.getSession();
 
-        if (wrapperLogin.isEmpty()) {
-            log.info("not exist");
+        if (currentUser == null) {
+            log.info("login fail");
             return "redirect:/login";
-        } else {
-            log.info("current user={}", findUser.getId(), findUser.getUsername());
-            return "redirect:/";
         }
+
+        redirectAttributes.addAttribute("key", currentUser.getKey());
+        session.setAttribute("user", currentUser);
+        log.info("login success");
+        return "redirect:/book/{key}";
     }
 
     @PostMapping("/login/register")
