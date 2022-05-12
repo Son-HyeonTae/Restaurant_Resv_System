@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html>
+
+<head>
 <!-- Basic -->
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,24 +11,34 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="shortcut icon" href="images/favicon.png" type="">
+<link rel="shortcut icon" href="images/favicon.png"
+      th:href="@{~/images/favicon.png}"
+      type="">
 
 <title> Italic Time - Menu </title>
 
-<!-- bootstrap core css -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"
+        th:href="@{~/css/bootstrap.css}"
+  />
 
-<!--owl slider stylesheet (슬라이드)-->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-<!-- nice select  -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-<!-- font style -->
-<link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css"
+        th:href="@{~/css/font-awesome.min.css}"
+        rel="stylesheet" />
 
-<!-- Custom styles for this template -->
-<link href="css/style.css" rel="stylesheet" />
-<!-- responsive style -->
-<link href="css/responsive.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css"
+        th:href="@{~/css/style.css}"
+        rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css"
+        th:href="@{~/css/responsive.css}"
+        rel="stylesheet" />
 
 </head>
 
@@ -32,13 +46,15 @@
 
 <div class="hero_area">
   <div class="bg-box">
-    <img src="images/bg.jpg" alt="">
+    <img src="images/bg.jpg"
+         th:src="@{~/images/bg.jpg}"
+         alt="">
   </div>
   <!-- 헤더  -->
   <header class="header_section">
-    <div class="container">
+    <div class="container" th:object="${login}">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="/index">
+        <a class="navbar-brand" href="/index" th:href="@{|/index/${login.key}|}">
           <span>
             ItalicTime
           </span>
@@ -51,16 +67,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav  mx-auto ">
             <li class="nav-item active">
-              <a class="nav-link" href="/" >Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/" th:href="@{|/index/${login.key}|}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/menu" >Menu</a>
+              <a class="nav-link" href="/menu" th:href="@{|/menu/${login.key}|}">Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about" >About</a>
+              <a class="nav-link" href="/about" th:href="@{|/about/${login.key}|}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/book" >Book Table</a>
+              <a class="nav-link" href="/book" th:href="@{|/book/${login.key}|}">Book Table</a>
             </li>
           </ul>
           <div class="user_option">
@@ -126,7 +142,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </form>
-            <a href="/login"  class="order_online">
+            <a href="/login" th:href="@{|/login/${login.key}|}" class="order_online">
               Login
             </a>
           </div>
@@ -161,7 +177,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Soups and Salads\Georgian Salad.jpeg" alt="">
+                  <img src="menu images\Soups and Salads\Georgian Salad.jpeg"
+                       th:src="@{~/menu%20images/Soups%20and%20Salads/Georgian%20Salad.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -183,7 +201,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Meet and Fish\Chicken Tapaka.jpeg" alt="">
+                  <img src="menu images\Meet and Fish\Chicken Tapaka.jpeg"
+                       th:src="@{~/menu%20images/Meet%20and%20Fish/Chicken%20Tapaka.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -205,7 +225,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Soups and Salads\Kharcho.jpeg" alt="">
+                  <img src="menu images\Soups and Salads\Kharcho.jpeg"
+                       th:src="@{~/menu%20images/Soups%20and%20Salads/Kharcho.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -227,7 +249,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Desserts\Napoleon Cake.jpeg" alt="">
+                  <img src="menu images\Desserts\Napoleon Cake.jpeg"
+                       th:src="@{~/menu%20images/Desserts/Napoleon%20Cake.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -249,7 +273,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Wines\Icewine.jpeg" alt="">
+                  <img src="menu images\Wines\Icewine.jpeg"
+                       th:src="@{~/menu%20images/Wines/Icewine.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -271,7 +297,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Soups and Salads\Caramel Pudding.jpeg" alt="">
+                  <img src="menu images\Soups and Salads\Caramel Pudding.jpeg"
+                       th:src="@{~/menu%20images/Soups%20and%20Salads/Caramel%20Pudding.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -293,7 +321,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Meet and Fish\Lamb Rib Chops.jpeg" alt="">
+                  <img src="menu images\Meet and Fish\Lamb Rib Chops.jpeg"
+                       th:src="@{~/menu%20images/Meet%20and%20Fish/Lamb%20Rib%20Chops.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -315,7 +345,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Meet and Fish\Pork Chalaghaji.jpeg" alt="">
+                  <img src="menu images\Meet and Fish\Pork Chalaghaji.jpeg"
+                       th:src="@{~/menu%20images/Meet%20and%20Fish/Pork%20Chalaghaji.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -337,7 +369,9 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="menu images\Desserts\Winter Pear.jpeg" alt="">
+                  <img src="menu images\Desserts\Winter Pear.jpeg"
+                       th:src="@{~/menu%20images/Desserts/Winter%20Pear.jpeg}"
+                       alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -443,26 +477,26 @@
   </footer>
   <!-- 하단 끝 -->
 
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <!-- nice select -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js" th:src="@{~/js/jquery-3.4.1.min.js}"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js" th:src="@{~/js/bootstrap.js}"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- custom js -->
+<script src="js/custom.js" th:src="@{~/js/bootstrap.js}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+</script>
+<!-- End Google Map -->
 
 </body>
 
