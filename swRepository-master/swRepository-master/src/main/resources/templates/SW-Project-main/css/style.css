@@ -1042,7 +1042,7 @@ a:focus {
   display: none;
 }
 
-.res-btn:hover >.table_info{
+.res-btn:hover > .table_info{
   border: 1px solid black;
   background-color:white;
   display: inline-block;
