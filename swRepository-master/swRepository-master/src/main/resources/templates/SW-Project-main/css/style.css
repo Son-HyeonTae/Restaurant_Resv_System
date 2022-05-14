@@ -13,7 +13,7 @@ body {
 .layout_padding2 {
   padding: 75px 0;
 }
-
+/* 유저 변경 화면 리스트 1개 남기기 css*/
 .layout_padding3 {
   padding: 20px 0;
 }
@@ -199,13 +199,6 @@ a:focus {
   color: #ffffff;
   margin: 0 10px;
 }
-
-.mod-btn-size{
-  height:60px;
-  width:60px;
-  border-radius: 100%;
-}
-
 
 .custom_nav-container .nav_search-btn:hover {
   color: #ffbe33;
@@ -760,10 +753,15 @@ a:focus {
   padding-top:45px;
   padding:0 40px;
 }
-.book_section .mod_table_container {
-  min-height: 27%;
-  padding: 0 150px;
-  border-radius: 100%;
+
+.res-btn:hover > .table_info{
+  border: 1px solid black;
+  background-color:white;
+  display: inline-block;
+  font-size: 20px;
+  color:black;
+  font-family: Arial;
+  margin-left:-3px;
 }
 
 /* client section start */
@@ -1035,3 +1033,49 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* 추가코드 */
+
+/* 유저 리스트에서 변경 창 테이블 css */
+.mod_table_container
+{
+  padding-top:5px;
+  padding-bottom:10px;
+  border-radius: 100%;
+}
+/* user usermodify 버튼 컨테이너*/
+.mod_btn_container
+{
+  padding-left:125px;
+}
+/* 버튼별 padding*/
+.mod_btn_padding
+{
+  padding-left:15px;
+}
+/* button 사이즈 */
+.mod_btn_size{
+  height:70px;
+  width:70px;
+  border-radius: 100%;
+}
+/* user modify에서 버튼 tag시 정보 출력 */
+.mod_table_info{
+  display: none;
+}
+/* user modify에서 버튼 tag시 정보 출력 */
+.mod_btn:hover > .mod_table_info{
+  border: 3px solid black;
+  background-color:white;
+  display: inline-block;
+  font-size: 12px;
+  color:black;
+  width:70px;
+  height:60px;
+  font-style: Arial ;
+  margin-left: -13px;
+}
+/*modify page 버튼 */
+.table_info{
+  display: none;
+}

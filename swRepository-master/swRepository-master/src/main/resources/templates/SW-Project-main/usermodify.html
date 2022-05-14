@@ -64,7 +64,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  mx-auto ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index" th:href="@{index}">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index" th:href="@{index}">Home <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="menu" th:href="@{menu}">Menu</a>
@@ -173,11 +174,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>강정수</td>
+                    <td>장현석</td>
                     <td>010-1111-2222</td>
                     <td>abc@naver.com</td>
                     <td>1</td>
-                    <td>2022-05-11</td>
+                    <td>2022-05-14</td>
                 </tr>
 
                 </tbody>
@@ -215,7 +216,7 @@
                         </div>
                         <div>
                             <select class="form-control nice-select wide">
-                                <option value="" disabled selected >
+                                <option value="" disabled selected>
                                     테이블 번호
                                 </option>
                                 <option value="1">
@@ -277,49 +278,95 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="mod_table_container ">
-                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">1</button>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">2</button>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">3</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mod_table_container ">
-                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">4</button>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">5</button>
-                        </div>
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">6</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mod_table_container ">
-                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
-                                <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">7</button>
+                <div class="mod_btn_container ">
+                    <div class="mod_table_container ">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn" >1
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
                             </div>
                             <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">8</button>
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">2
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
                             </div>
                             <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" style="background-color:#3498DB" class="btn btn-secondary mod-btn-size">9</button>
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">3
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod_table_container ">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">4
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">5
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">6
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod_table_container ">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">7
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">8
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#3498DB"
+                                            class="btn btn-secondary mod_btn_size mod_btn">9
+                                        <div class="mod_table_info">인원수:3명 현재 예약 가능</div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+    </div>
     </div>
 </section>
 
