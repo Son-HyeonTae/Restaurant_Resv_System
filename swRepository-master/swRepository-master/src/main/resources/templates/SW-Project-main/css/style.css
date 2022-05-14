@@ -1049,5 +1049,6 @@ a:focus {
   font-size: 20px;
   color:black;
   font-family: Arial;
+  margin-left:-3px;
 }
 
