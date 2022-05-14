@@ -75,14 +75,6 @@ h2 {
   text-align: center;
 }
 
-.res-btn-size{
-  height:125px;
-  width:125px;
-  border-radius:100%;
-  font-size:250%;
-
-}
-
 a,
 a:hover,
 a:focus {
@@ -742,23 +734,7 @@ a:focus {
   background-color: #e69c00;
 }
 
-.book_section .res_table_container1
-{
-  padding-top:45px;
-  padding-left:40px;
-}
 
-.book_section .res_table_container2
-{
-  padding-top:45px;
-  padding:0 40px;
-}
-
-.book_section .res_table_container3
-{
-  padding-top:45px;
-  padding:0 40px;
-}
 .book_section .mod_table_container {
   min-height: 27%;
   padding: 0 150px;
@@ -1034,3 +1010,44 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* 강정수 수정*/
+.res-btn-size{
+  height:125px;
+  width:125px;
+  border-radius:100%;
+  font-size:250%;
+
+}
+
+.book_section .res_table_container1
+{
+  padding-top:45px;
+  padding-left:40px;
+}
+
+.book_section .res_table_container2
+{
+  padding-top:45px;
+  padding:0 40px;
+}
+
+.book_section .res_table_container3
+{
+  padding-top:45px;
+  padding:0 40px;
+}
+
+.table_info{
+  display: none;
+}
+
+.res-btn:hover >.table_info{
+  border: 1px solid black;
+  background-color:white;
+  display: inline-block;
+  font-size: 20px;
+  color:black;
+  font-family: "Yu Gothic UI Semibold";
+}
+
