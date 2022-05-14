@@ -79,6 +79,8 @@ h2 {
   height:125px;
   width:125px;
   border-radius:100%;
+  font-size:250%;
+
 }
 
 a,
@@ -201,11 +203,9 @@ a:focus {
 .mod-btn-size{
   height:60px;
   width:60px;
+  border-radius: 100%;
 }
 
-.res_btn_size{
-
-}
 
 .custom_nav-container .nav_search-btn:hover {
   color: #ffbe33;
@@ -745,22 +745,25 @@ a:focus {
 
 .book_section .res_table_container1
 {
+  padding-top:45px;
   padding-left:40px;
 }
 
 .book_section .res_table_container2
 {
+  padding-top:45px;
   padding:0 40px;
 }
 
 .book_section .res_table_container3
 {
+  padding-top:45px;
   padding:0 40px;
 }
 .book_section .mod_table_container {
   min-height: 27%;
   padding: 0 150px;
-  overflow: hidden;
+  border-radius: 100%;
 }
 
 /* client section start */
@@ -924,16 +927,7 @@ a:focus {
 .contact_section .form_container button:hover {
   background-color: #e69c00;
 }
-.book_section .mod_table_container {
-  min-height: 27%;
-  padding: 0 150px;
-  overflow: hidden;
-}
-.mod-btn-size{
-    height:60px;
-    width:60px;
-    border-radius:100%;
-}
+
 /* footer section*/
 .footer_section {
   background-color: #222831;

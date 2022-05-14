@@ -202,9 +202,6 @@
                                     인원 수
                                 </option>
                                 <option value="2">
-                                    1명
-                                </option>
-                                <option value="2">
                                     2명
                                 </option>
                                 <option value="3">
@@ -254,6 +251,23 @@
                         <div>
                             <input type="date" class="form-control" th:field="*{date}">
                         </div>
+                        <select class="form-control nice-select wide">
+                            <option value="" disabled selected>
+                                시간
+                            </option>
+                            <option>
+                                12:00~14:00
+                            </option>
+                            <option>
+                                14:00~16:00
+                            </option>
+                            <option>
+                                18:00~20:00
+                            </option>
+                            <option>
+                                20:00~22:00
+                            </option>
+                        </select>
                         <div class="btn_box">
                             <button type="submit">
                                 수정하기
