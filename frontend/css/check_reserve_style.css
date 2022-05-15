@@ -9,18 +9,19 @@
 .check_reserve_section .detail-box .reserve_list a {
   display: inline-block;
   padding: 10px 15px;
-  background-color: skyblue;
-  color: #ffffff;
+  background-color: #e0e9f0;
+  color: black;
+  font-weight: bold;
   border-radius: 15px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   border: none;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 .check_reserve_section .detail-box .reserve_list a:hover {
-  background-color: darkblue;
+  background-color: #0088dd;
 }
 
 .check_reserve_section .reserve_list{
@@ -28,11 +29,12 @@
 }
 
 /* 예약목록 수정옵션*/
-.check_reserve_section .detail-box .reserve_options a {
+.check_reserve_section .reserve_options a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: black;
+  background-color: gray;
   color: #ffffff;
+  font-weight: bold;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -40,11 +42,23 @@
   margin-top: 20px;
   margin-left: 15px;
 }
-
-.check_reserve_section .detail-box .reserve_options a:hover {
-  background-color: gray;
+.check_reserve_section .reserve_options a:hover {
+  background-color: #413f3b;
 }
 
-.check_reserve_section .reserve_options{
+
+.check_reserve_section .rsv_add a{
+  color: black;
+  background-color: #b5c1ad;
+}
+.check_reserve_section .rsv_add a:hover{
+  background-color: #0088dd;
+}
+
+
+.reserve_options .rsv_option_list{
   list-style-type: none;
+}
+.reserve_options .rsv_option_list li{
+  margin: 0px 0px 80px 0px;
 }
