@@ -28,3 +28,6 @@ DB Table과 java class를 매핑, query는 JPQL을 사용
 6. 예약을 할 때 로그인 사용자와 일반 사용자의 분리
 7. 인원수와 예약일시에 따른 검증 (중복예약, if Reservation covers > 테이블의 covers)
 
+**5월 16일**
+관리자가 전체 예약을 확인하는 adminlist 페이지 추가
+고객이 자신의 예약을 확인하고 예약 목록에서 누르면 수정할 수 있는 usermodify 페이지 
