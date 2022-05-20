@@ -15,12 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @SpringBootTest
 @Transactional
 @Rollback(true)
-public class DataTest {
+public class ReservationTest {
 
     @Autowired
     ResTableRepository tableRepository;
@@ -38,7 +41,7 @@ public class DataTest {
 
         //then
         Assertions.assertThat(findTable.getNumber()).isEqualTo(saveTable.getNumber());
-        Assertions.assertThat(findTable.getPlaces()).isEqualTo(saveTable.getPlaces());
+        Assertions.assertThat(findTable.getCovers()).isEqualTo(saveTable.getCovers());
 
     }
 
@@ -87,21 +90,21 @@ public class DataTest {
     public void 예약_조회() throws Exception {
         //given
         Reservation r1 = new Reservation(1, 2,
-                LocalDate.now(), LocalDateTime.now(), 1, 1
-                , LocalDateTime.of(2022, 05, 31, 13, 00));
+                LocalDate.now(), LocalTime.now(), 1, 1
+                , LocalTime.now());
         Reservation r2 = new Reservation(2, 3,
-                LocalDate.now(), LocalDateTime.now(), 2, 2
-                , LocalDateTime.of(2022, 06, 30, 13, 00));
+                LocalDate.now(), LocalTime.now(), 2, 2
+                ,LocalTime.now());
         Reservation r3 = new Reservation(3, 3,
-                LocalDate.now(), LocalDateTime.now(), 3, 3
-                , LocalDateTime.of(2022, 05, 31, 13, 00));
+                LocalDate.now(), LocalTime.now(), 3, 3
+                , LocalTime.now());
         //when
         reservationRepository.save(r1);
         reservationRepository.save(r2);
         reservationRepository.save(r3);
         //then
 
-        List<Reservation> forArriveTime = reservationRepository.findForArriveTime(r1.getArrivalTime());
+        List<Reservation> forArriveTime = reservationRepository.findForArriveTime(r1.getEndTime());
         for (Reservation reservation : forArriveTime) {
             System.out.println(reservation);
         }

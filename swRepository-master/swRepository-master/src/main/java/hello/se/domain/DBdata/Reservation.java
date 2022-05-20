@@ -6,15 +6,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
+
+//예약정보
 @Entity
 @Data
-//예약정보
 public class Reservation {
     @Id
-    @GeneratedValue
-    @Column(name = "oid", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "res_oid")
     private Integer oid;
 
     @Column(name = "name")
@@ -25,16 +27,17 @@ public class Reservation {
 
     @Column(name = "date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "time")
-    private LocalDateTime time;
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime time;
 
     @Column(name = "table_id")
     private Integer table_id;
 
-    @Column(name = "customer_id")
-    private Integer customer_id;
+    /*@Column(name = "customer_id")
+    private Integer customer_id;*/
 
     @Column(name = "email")
     private String email;
@@ -42,31 +45,36 @@ public class Reservation {
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Column(name = "arrivalTime")
-    private LocalDateTime arrivalTime;
+    @Column(name = "endTime")
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime endTime;
 
-    @OneToOne(mappedBy = "reservation")
-    private Login login;
+    @Column(name = "login_key")
+    private Long loginKey;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @Column(name = "coversError")
+    private Boolean error;
+
+   /* @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "resTable_oid")
-    private ResTable resTable;
+    private ResTable resTable;*/
 
     public Reservation() {
     }
 
-    public Reservation(Integer oid, Integer covers, Date date, LocalDateTime time,
-                       Integer table_id, Integer customer_id, LocalDateTime arrivalTime) {
+    public Reservation(Integer oid, Integer covers, LocalDate date, LocalTime time,
+                       Integer table_id, Integer customer_id, LocalTime endTime) {
         this.oid = oid;
         this.covers = covers;
         this.date = date;
         this.time = time;
         this.table_id = table_id;
-        this.customer_id = customer_id;
-        this.arrivalTime = arrivalTime;
+//        this.customer_id = customer_id;
+        this.endTime = endTime;
     }
 
-    public void setResTable(ResTable resTable) {
-        this.resTable = resTable;
-    }
+    /*public void setLogin(Login login) {
+        this.login = login;
+        login.getReservations().add(this);
+    }*/
 }
