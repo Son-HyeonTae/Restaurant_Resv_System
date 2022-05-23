@@ -3,6 +3,7 @@ package hello.se.domain.respository;
 import hello.se.domain.DBdata.Login;
 import hello.se.domain.DBdata.ResTable;
 import hello.se.domain.DBdata.Reservation;
+import hello.se.web.Form.LoginForm;
 import hello.se.web.Form.LoginValidationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,14 +35,21 @@ public class LoginRepository {
         this.customerRepository = customerRepository;
     }
 
-    //관리자 등록
+    //관리자/user1등록
     public void init() {
         Login admin = new Login();
         admin.setId("test");
         admin.setPassword("1234");
-        admin.setUsername("관리자");
+        admin.setUsername("admin");
         admin.setPhoneNumber("010-1111-1111");
         em.persist(admin);
+
+        Login user1 = new Login();
+        user1.setId("aaaa");
+        user1.setPassword("1111");
+        user1.setUsername("user1");
+        user1.setPhoneNumber("010-2222-2222");
+        em.persist(user1);
     }
 
     //테스트용
@@ -61,7 +71,7 @@ public class LoginRepository {
     }
 
     //웹용
-    public Login saveWeb(hello.se.web.Form.LoginForm loginForm) {
+    public Login saveWeb(LoginForm loginForm) {
         Login login = new Login();
         login.setLogin(loginForm);
         em.persist(login);
@@ -104,9 +114,6 @@ public class LoginRepository {
     public Login findByKey(Long key) {
         return em.find(Login.class, key);
     }
-
-
-
 
     /*//테이블의 번호를 바꿈
     public Login modifyTableNumber(String id, Reservation newReservation, ResTable resTable) {
@@ -153,50 +160,35 @@ public class LoginRepository {
         return findCustomer;
     }*/
 
- /* 여기부터 일단 해보긴 했음*/
-    // 테이블id값 받아와서 서로 비교 해서 인원 검증
-    private boolean coversValidation(Reservation reservation, ResTable resTable) {
 
-        if (reservation.getCovers() > resTable.getTable_id().getCovers()) {
-            return false;
-        }
-        return true;
-    }
 
-    private boolean dateValidation(Reservation reservation)
-    {
-        LocalDate nowDate=LocalDate.now();
-        if(reservation.getDate().isBefore(nowDate)) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean timeValidation(Reservation reservation)
-    {
-        LocalDate nowDate=LocalDate.now();
-        LocalTime nowTime=LocalTime.now();
-        if(reservation.getDate().equals(nowDate)) {
-            if (reservation.getTime().isBefore(nowTime)) {
+//     date, time 검증
+    /*private boolean timeValidation(Reservation reservation, Reservation target) {
+        if (reservation.getDate().equals(target.getDate())) {
+            if (reservation.getTime().isAfter(target.getTime())) {
                 return false;
             }
+        } else {
+            return true;
         }
         return true;
-    }
+    }*/
 
-    private boolean monitor(Reservation reservation, ResTable resTable)
+
+
+
+    /*private boolean monitor(Reservation reservation, ResTable resTable)
     {
         if(coversValidation(resrvation,restable)&&dateValidation(reservation)&&timeValidation(reservation))
         {
             return true;
         }
         return false;
-    }
+    }*/
 
-    /**
-     * date, time 검증
-     */
-    private boolean timeValidation(Reservation reservation, Reservation target) {
+
+//     date, time 검증
+   /* private boolean timeValidation(Reservation reservation, Reservation target) {
         if (reservation.getDate().equals(target.getDate())) {
             if (reservation.getTime().isEqual(target.getTime())) {
                 return false;
@@ -205,5 +197,5 @@ public class LoginRepository {
             return true;
         }
         return true;
-    }
+    }*/
 }
