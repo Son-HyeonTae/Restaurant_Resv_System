@@ -12,15 +12,15 @@
                     <button type="button" class="togglebtn" onclick="login()" >로그인</button>
                     <button type="button" class="togglebtn" onclick="register()">회원가입</button>
                 </div>
-                <form id="login" action="" class="input-group" th:action="@{/login/enter}" th:method="post"
-                th:object="${loginValidationForm}">
+                <form id="login" action="loginIndex.html" class="input-group" th:action="@{/login/enter}" th:method="post" 
+                th:object="${loginValidationForm}"> <!-- 로그인 버튼을 누르고 성공하면, loginindex로 넘어가는 부분 -->
                     <input type="text" class="input-field" placeholder="Id" required th:field="*{id}">
                     <input type="password" class="input-field" placeholder="Password" required th:field="*{password}">
                     <input type="checkbox" class="checkbox"><span>로그인 정보 저장하기</span>
                     <button class="submit" type="submit">로그인</button>
                 </form>
-                <form id="register" action="" class="input-group" th:action="@{/login/register}" th:method="post"
-                      th:object="${loginForm}">
+                <form id="register" action="login_signup.html" class="input-group" th:action="@{/login/register}" th:method="post"
+                      th:object="${loginForm}"> <!-- 회원가입 버튼을 누르고 성공하면, 다시 로그인으로 넘어가는 부분 -->
                     <input type="text" class="input-field" id="id" placeholder="아이디"  th:field="*{id}" required>
                     <input type="text" class="input-field" id="username" placeholder="이름" th:field="*{username}" required>
                     <input type="password" class="input-field" id="password" placeholder="비밀번호" th:field="*{password}" required>
