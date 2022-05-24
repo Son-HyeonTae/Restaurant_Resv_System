@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="images/favicon.png" th:href="@{~/images/favicon.png}" type="">
+
+    <title> User Modify </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"
+          th:href="@{~/css/bootstrap.css}"/>
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css}"/>
+    <!-- nice select  -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css}"
+          integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+          crossorigin="anonymous"/>
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{~/css/font-awesome.min.css}"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" th:href="@{~/css/style.css}"/>
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" th:href="@{~/css/responsive.css}"/>
+    <style>
+        /* 추가코드 */
+        /* 유저 리스트에서 변경 창 테이블 css */
+        .mod_table_container {
+            padding-top: 5px;
+            padding-bottom: 10px;
+        }
+
+        /* user userModify 버튼 컨테이너*/
+        .mod_btn_container {
+            padding-left: 125px;
+        }
+
+        /* 버튼별 padding*/
+        .mod_btn_padding {
+            padding-top: 30px;
+            padding-left: 15px;
+            padding-bottom: 30px;
+        }
+
+        /* button 사이즈 */
+        .mod_btn_size {
+            height: 120px;
+            width: 120px;
+            font-size: 30px;
+        }
+
+        /* user modify에서 버튼 tag시 정보 출력 */
+        .mod_table_info {
+            display: none;
+            position:absolute;
+        }
+
+        .mod_btn{
+            border-radius: 10%;
+        }
+
+        .mod_btn:hover > .mod_table_info{
+            border: 3px solid black;
+            background-color:white;
+            display: inline-block;
+            font-size: 16px;
+            color:black;
+            width:250px;
+            height:250px;
+            font-family: Arial;
+            margin-left: -125px;
+            z-index:1;
+        }
+
+        /*modify page 버튼 */
+        .table_info {
+            display: none;
+        }
+        /*여기서 부터 수정된 css*/
+        .navbar-brand {
+            font-family: "Lora", 'Sans-serif', cursive;
+        }
+
+        .footer_section h4,
+        .footer_section .footer-logo {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-family: "Lora", 'Sans-serif', cursive;
+        }
+
+        .user_option .order_online {
+            display: inline-block;
+            padding: 8px 30px;
+            background-color: #33b4ff;
+            color: #ffffff;
+            border-radius: 45px;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            border: none;
+        }
+
+    </style>
+</head>
+
+<body class="sub_page">
+
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="images/bg.jpg" th:src="@{~/images/bg.jpg}" alt="">
+    </div>
+
+    <!-- 헤더  -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="index" th:href="@{index}">
+            <span>
+              ItalicTime
+            </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+                <!-- 상단 바  -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav  mx-auto ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/" th:href="@{|/index/${login.key}|}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu" th:href="@{|/menu/${login.key}|}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about" th:href="@{|/about/${login.key}|}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/book" th:href="@{|/book/${login.key}|}">Book Table</a>
+                        </li>
+                    </ul>
+                    <div class="user_option">
+                        <a href="" class="user_link" th:href="@{|/modify/${login.key}|}">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                        <a href="/login" th:href="@{|/logout/${login.key}|}" class="order_online">
+                            LogOut
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- 헤더 끝 -->
+</div>
+
+<section class="book_section layout_padding-top">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Reservation List
+            </h2>
+            <table class="table table-hover">
+                <tr>
+                    <th scope="col">List번호</th>
+                    <th scope="col">이름</th>
+                    <th scope="col">테이블 번호</th>
+                    <th scope="col">전화번호</th>
+                    <th scope="col">이메일</th>
+                    <th scope="col">인원수</th>
+                    <th scope="col">예약 날짜 / 예약시간 ~ 종료시간</th>
+                </tr>
+
+                <tr th:each="book : ${list}">
+                    <th scope="row" th:text="${book.oid}">3</th>
+                    <td th:text="${book.name}">장현석</td>
+                    <td th:text="${book.table_id}">1</td>
+                    <td th:text="${book.phoneNumber}">010-1111-2222</td>
+                    <td th:text="${book.email}">abc@naver.com</td>
+                    <td th:text="${book.covers}">3</td>
+                    <td th:text="${book.date}+' / '+${book.time}+' ~ '+${book.endTime}">2022-05-14</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <!--    <form action="" th:action="@{/adminlist}" th:method="post" th:object="${reservation}">-->
+    <!--    </form>-->
+</section>
+<!-- 예약자 리스트 끝 -->
+
+<section class="book_section layout_padding3" th:object="${login}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <!-- TODO 리스트번호가 아닌 이름으로 바꾸기-->
+                    <form action="" th:action="@{|/modify/${login.key}|}" th:method="post" th:object="${reservation}">
+                        <div>
+                            <div style="color: red"><p>수정할 예약의 리스트 번호를 적어주세요.</p></div>
+                            <div>
+                                <input type="text" class="form-control" placeholder="예약 리스트 번호"
+                                       th:field="${modifyForm.modifyId}"/>
+                            </div>
+                            <div style="color: red"><p>이동할 테이블 번호를 입력해주세요.</p></div>
+                            <select class="form-control nice-select wide" id="table_id" th:field="*{table_id}">
+                                <option value="1">
+                                    1
+                                </option>
+                                <option value="2">
+                                    2
+                                </option>
+                                <option value="3">
+                                    3
+                                </option>
+                                <option value="4">
+                                    4
+                                </option>
+                                <option value="5">
+                                    5
+                                </option>
+                                <option value="6">
+                                    6
+                                </option>
+                                <option value="7">
+                                    7
+                                </option>
+                                <option value="8">
+                                    8
+                                </option>
+                                <option value="9">
+                                    9
+                                </option>
+                            </select>
+                        </div>
+                        <div>
+                            <div style="color: red" th:if="${coversError}">
+                                <p>인원 수를 입력해주세요</p>
+                            </div>
+
+                            <div style="color: red" th:if="${!coversError}">
+                                <p th:text="${errorTable.oid} + '번 테이블은 '+ ${errorTable.covers} + '명을 초과할 수 없습니다.'">
+                                    인원수 초과입니다.</p>
+                            </div>
+                            <select class="form-control nice-select wide" th:field="*{covers}">
+                                <option value="2">
+                                    2명
+                                </option>
+                                <option value="3">
+                                    3명
+                                </option>
+                                <option value="4">
+                                    4명
+                                </option>
+                            </select>
+                        </div>
+                        <div style="color: red" th:if="${!isCurrentDate}">
+                            <p th:text="'현재 날짜 이전에는 예약이 불가합니다.'">
+                                예약할 수 없는 시간입니다.</p>
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" th:field="*{date}">
+                        </div>
+                        <div style="color: red"><p>영업시간: 12:00 ~ 22:00</p></div>
+                        <div style="color: red" th:if="${!isDuplicate}">
+                            <p th:text="${duplicateTime} + '에는 예약이 불가합니다.'"></p>
+                        </div>
+                        <div>
+                            <input type="time" class="form-control" value="12:00" min="12:00" max="20:00"
+                                   th:field="*{time}">
+                        </div>
+                        <div class="btn_box" style="padding: 0 0 35px 0; display: inline-block">
+                            <button type="submit" th:href="@{|/modify/${login.key}|}">수정하기</button>
+                        </div>
+                    </form>
+                    <div style="display: inline-block; padding: 0 0 35px 0">
+                        <button th:onclick="|location.href='@{/cancel/{key}(key=${login.key})}'|">예약 취소 화면으로 이동</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mod_btn_container">
+                    <div class="mod_table_container">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">1
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum1.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr1}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">2
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum2.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr2}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">3
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum3.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr3}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod_table_container ">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">4
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum4.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr4}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">5
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum5.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr5}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">6
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum6.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr6}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod_table_container ">
+                        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">7
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum7.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr7}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">8
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum8.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr8}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <div class="mod_btn_padding">
+                                    <button type="button" style="background-color:#C96B34"
+                                            class="btn btn-secondary mod_btn_size mod_btn">9
+                                        <div class="mod_table_info">
+                                            <span th:text="'앉을 수 있는 인원: ' + ${tableNum9.covers}+ '명'"
+                                                  style="color: red">인원수:3명</span>
+                                            <div style="font-weight: bold; color: darkblue">예약 상황</div>
+                                            <th:block th:each="book : ${arr9}">
+                                                <p th:text="${book.date}+': ' + ${book.time} + ' ~ ' + ${book.endTime}">
+                                                    111</p>
+                                            </th:block>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- 하단 -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>위치</span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>전화번호</span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>이메일</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="" class="footer-logo">
+                        ItalicTime
+                    </a>
+                    <p>
+                        육류, 생선류등 메인요리와 스튜, 피자 그리고 다양한 와인들을 즐길 수 있습니다.
+                    </p>
+                    <div class="footer_social">
+                        <a href="">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    가게 운영시간
+                </p>
+                <p>
+                    11:00 Am - 09:00 Pm
+                </p>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>
+                &copy; <span id="displayYear"></span>
+                <a href="https://html.design/">Restaurant Reservation Page System</a><br><br>
+                <!--                &copy; <span id="displayYear"></span> Distributed By-->
+                <a href="https://themewagon.com/" target="_blank">Team E</a>
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- 하단 끝 -->
+
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js" th:src="@{~/js/jquery-3.4.1.min.js}"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js}"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+
+<!-- bootstrap js -->
+<script src="js/bootstrap.js" th:src="@{~/js/bootstrap.js}"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js}">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"
+        th:src="@{https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js}"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js}"></script>
+<!-- custom js -->
+<script src="js/custom.js"
+        th:src="@{~/js/custom.js}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+</script>
+<!-- End Google Map -->
+
+</body>
+
+</html>
